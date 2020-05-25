@@ -2,4 +2,40 @@
 https://meetslabsol.zacatecas.gob.mx/Web
 cursoweb2020
 
+
+https://meetslabsol.zacatecas.gob.mx/Web
+
+
 1.- composer create-project --prefer-dist laravel/laravel videos
+
+Laravel 
+
+https://laravel.com/docs/7.x/installation
+
+
+Boostrap 4 
+
+https://getbootstrap.com/
+
+Vue components bootstrap
+
+https://bootstrap-vue.org/
+
+
+npm i --save @fortawesome/fontawesome-free
+npm i --save  core-js
+npm i --save regenerator-runtime
+npm i --save intersection-observer
+npm i --save vue
+npm i --save bootstrap-vue
+npm i --save vuex
+npm i --save vue-router
+npm i --save vuex-router-sync
+npm i --save axios
+npm install  --save-dev  browser-sync browser-sync-webpack-plugin@2.0.1
+npm i --save @babel/polyfill
+npm i --save-dev webpack-chunk-rename-plugin
+
+
+crear base de datos
+CREATE DATABASE `mis_pelis` DEFAULT CHARACTER SET = `utf8` DEFAULT COLLATE = `utf8_unicode_ci`;
