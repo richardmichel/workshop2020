@@ -12,7 +12,6 @@
         "watch-css": "npm run development-css -- --watch",
         "prod-css": "npm run production-css",
         "production-css": "cross-env NODE_ENV=production COMP_TYPE=css node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-
     },
     "devDependencies": {
         "axios": "^0.19.2",
@@ -36,6 +35,7 @@
         "regenerator-runtime": "^0.13.5",
         "vue": "^2.6.11",
         "vue-router": "^3.2.0",
+        "vue-video-player": "^5.0.2",
         "vuex": "^3.4.0",
         "vuex-router-sync": "^5.0.0"
     }

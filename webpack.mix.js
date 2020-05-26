@@ -55,7 +55,7 @@ mix.webpackConfig({
 		filename: (chunkData) => {
 			return chunkData.chunk.name === '/manifest' ? 'manifest.js' : '[name].js?id=[chunkhash]';
 		},
-		chunkFilename: mix.inProduction() ? "js/split/[hash].js?id=[chunkhash]" : '[name].js',
+		chunkFilename: mix.inProduction() ? "js/split/[chunkhash].js?id=[chunkhash]" : '[name].js',
 	},
 
 

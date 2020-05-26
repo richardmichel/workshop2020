@@ -4,6 +4,7 @@ html {
 }
 body {
   margin: 0;
+  background-color: #c8cbccc4;
 }
 
 html, body, #app {
@@ -16,9 +17,13 @@ html, body, #app {
 
 .cursor-select:hover {
   opacity: 0.6;
+  cursor: pointer;
+
 }
 
-
+.increment-size:hover{
+  font-size: 1.9em;
+}
 
 .py-10 {
   padding-top: 6rem !important;

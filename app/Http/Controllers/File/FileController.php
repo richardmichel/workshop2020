@@ -15,7 +15,9 @@ class FileController extends Controller
 		try {
 
 			if (Storage::disk('local')->exists('movies/' . $fileNameHash)) {
+
 				$pathToFile = storage_path() . "/app/movies/" . $fileNameHash;
+				
 				return response()->download(
 					$pathToFile,
 					$fileNameHash,

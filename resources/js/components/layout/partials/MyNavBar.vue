@@ -8,6 +8,11 @@
 
 			<div class="container">
 				<b-navbar-brand to="/">
+					<b-img src="/assets/img/movie.png" class="d-inline-block align-top"
+					       style="max-width: 30px;"
+					       fluid alt="Movie">
+					</b-img>
+
 					{{ titleApp }}
 				</b-navbar-brand>
 				<b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
