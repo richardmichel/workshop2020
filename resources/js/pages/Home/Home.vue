@@ -1,44 +1,38 @@
 <template>
 	<div>
+		<div>
+			<h4>Películas Recientes</h4>
+			<b-row cols="1" cols-sm="2" cols-md="4" cols-lg="6"
+			       class="box">
+				<b-col v-for="(item, index) in movies" :key="index">
 
-		<b-row>
-			<b-col sm="4" style="margin-top: 10px"  v-for="(item, index) in movies" :key="index">
-				<b-card
-						overlay
-						:img-src="item.poster"
-						img-alt="Card Image"
-						text-variant="dark"
-						title=""
-						sub-title="">
-					<b-text style="position: absolute;bottom: 0;left: 0;right: 0;">
-						<b-row style="margin:  0 auto">
-							<b-col sm="6">
+					<b-button v-b-modal.modal-1
+					          @click="setVideo(item)"
+					          class="my-play-button">
+						<i class="fas fa-play fa-lg "></i>
+					</b-button>
+					<b-img :src="item.poster" fluid-grow class="my-img" alt="Fluid image"></b-img>
+				</b-col>
+			</b-row>
+		</div>
+		<div>
+			<h4>Películas Populares</h4>
+			<b-row cols="1" cols-sm="2" cols-md="4" cols-lg="6"
+			       class="box">
+				<b-col v-for="(item, index) in movies" :key="index">
 
-								<b-button v-b-modal.modal-1  @click="setVideo(item)">
-									<i class="fas fa-play fa-lg cursor-select increment-size"></i>
-								</b-button>
-
-
-							</b-col>
-							<b-col sm="6" style="text-align:right;">
-								<div class="cursor-select">
-									<i class="far fa-thumbs-up fa-lg"></i>
-								</div>
-								<div class="cursor-select">
-									<i class="far fa-thumbs-down fa-lg"></i>
-								</div>
-								<div class="cursor-select">
-									<i class="fas fa-plus fa-lg"></i>
-								</div>
-							</b-col>
-						</b-row>
-					</b-text>
-				</b-card>
-			</b-col>
-		</b-row>
+					<b-button v-b-modal.modal-1
+					          @click="setVideo(item)"
+					          class="my-play-button">
+						<i class="fas fa-play fa-lg "></i>
+					</b-button>
+					<b-img :src="item.poster" fluid-grow class="my-img" alt="Fluid image"></b-img>
+				</b-col>
+			</b-row>
+		</div>
 
 
-		<b-modal id="modal-1"  size="xl" hide-footer hide-header
+		<b-modal id="modal-1" size="xl" hide-footer hide-header
 		         body-class="body-class"
 		         :title="movie.title">
 			<my-video
@@ -47,17 +41,20 @@
 					:poster="movie.poster"></my-video>
 		</b-modal>
 
-
 	</div>
 </template>
 
 <script>
 	import MyVideo from "@/components/ui/MyVideo";
+	import {ServiceFactory} from '@/services/ServiceFactory';
+
+	const MovieService = ServiceFactory.get('movie');
+
 	export default {
 		name: "Home",
 		components: {MyVideo},
-		data: ()=>({
-			movie:{
+		data: () => ({
+			movie: {
 				url: null,
 				poster: null,
 				title: null
@@ -88,22 +85,86 @@
 					url: '/api/file/show-file/rescate.mp4',
 					poster: '/api/file/show-file/rescate.jpg'
 				},
+				{
+					title: "Sonic",
+					url: '/api/file/show-file/sonic.mp4',
+					poster: '/api/file/show-file/sonic.jpeg'
+				}
 
 			]
 		}),
-		methods:{
-			setVideo(item){
-				this.movie =item;
+		methods: {
+			setVideo(item) {
+				this.movie = item;
+			},
+			async init() {
+
+				try {
+					const response = await MovieService.get();
+					if (response && response.status == 200) {
+						const {data} = response;
+						console.log("data:", data);
+
+					}
+					this.errorF(response);
+				} catch (error) {
+					this.errorF(error);
+				}
+			},
+			errorF(error) {
+				console.log(`service ${ error}`);
 			}
+		},
+		created() {
+			this.init();
 		}
 	}
 </script>
 
-<style >
-.body-class{
- padding: 0rem;
-}
-	.card-img{
-		height: 200px !important;
+<style>
+	.body-class {
+		padding: 0rem;
 	}
+
+	.card-img {
+		height: 200px !important;
+		border-radius: 0px !important;
+	}
+
+	.box .col {
+
+		padding-top: .75rem;
+		padding-bottom: .75rem;
+		min-height: 100px;
+		min-width: 180px;
+	}
+
+	.box .col:hover {
+		transition: transform .3s;
+		-ms-transform: scale(1.4);
+		-webkit-transform: scale(1.4);
+		transform: scale(1.4);
+		z-index: 2;
+	}
+
+	.my-img {
+		min-height: 100px;
+		min-width: 180px;
+	}
+
+	.my-play-button{
+		position: absolute;
+		left: 45%;
+		top: 30%;
+		background: #0000008c !important;
+		border: none;
+		color: #fff;
+	}
+	.my-play-button:hover{
+		cursor: pointer !important;
+		background: rgba(0, 0, 0, 0.68) !important;
+
+
+	}
+
 </style>

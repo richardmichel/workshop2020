@@ -75,6 +75,27 @@
 				console.log('the player is readied', player)
 				// you can use it to do something...
 				// player.[methods]
+			},
+			onPlayerLoadeddata(){
+
+			},
+			onPlayerCanplay(){
+
+			},
+			onPlayerPlaying(){
+
+			},
+			onPlayerEnded(){
+
+			},
+			onPlayerWaiting(){
+
+			},
+			onPlayerTimeupdate(){
+
+			},
+			onPlayerCanplaythrough(){
+
 			}
 		}
 	}
