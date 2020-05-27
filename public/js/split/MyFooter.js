@@ -86,20 +86,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("footer", [
+    _c("p", [_vm._v("© 20202 " + _vm._s(_vm.titleApp) + ".")]),
+    _vm._v(" "),
+    _c("p", [_vm._v("Michel © 2020")])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("footer", [
-      _c("p", [_vm._v("© 20202 Buenas Pelisc.")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Michel © 2020")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -9784,6 +9784,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MyCarousel",
   data: function data() {
@@ -9791,12 +9799,19 @@ __webpack_require__.r(__webpack_exports__);
       slide: 0,
       sliding: null,
       items: [{
-        url: "/api/file/show-file/bad-boys-3-l.jpg"
+        url: "/api/file/show-file/bad-boys-3-l.jpg",
+        title: "Tu próxima historia, ahora",
+        description: "DISFRUTA DONDE QUIERAS. CANCELA CUANDO QUIERAS."
       }, {
-        url: "/api/file/show-file/fast-and-furious-l.jpeg"
+        url: "/api/file/show-file/fast-and-furious-l.jpeg",
+        title: "Estreno ",
+        description: "EL MEJOR ENTRETEMIENTO"
       }, {
-        url: "/api/file/show-file/jurassic-world-l1.jpg"
-      }]
+        url: "/api/file/show-file/jurassic-world-l1.jpg",
+        title: "Increible",
+        description: "DISFRUTA DESDE TU SALA."
+      }],
+      show: true
     };
   },
   methods: {
@@ -9805,6 +9820,21 @@ __webpack_require__.r(__webpack_exports__);
     },
     onSlideEnd: function onSlideEnd(slide) {
       this.sliding = false;
+    },
+    init: function init() {
+      if (this.$route.name === "Home") {
+        this.show = true;
+      } else {
+        this.show = false;
+      }
+    }
+  },
+  created: function created() {
+    this.init();
+  },
+  watch: {
+    '$route': function $route(value) {
+      this.init();
     }
   }
 });
@@ -57072,7 +57102,10 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "b-nav-item",
-                        { staticClass: "cursor-select", attrs: { to: "/" } },
+                        {
+                          staticClass: "cursor-select",
+                          attrs: { to: "/recientes" }
+                        },
                         [_vm._v("\n\t\t\t\t\t\tRecientes\n\t\t\t\t\t")]
                       )
                     ],
@@ -57131,36 +57164,54 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "b-carousel",
-    {
-      staticStyle: { "text-shadow": "1px 1px 2px #333" },
-      attrs: {
-        id: "carousel-1",
-        interval: 2000,
-        fade: "",
-        indicators: "",
-        background: "#00",
-        "img-width": "1024",
-        "img-height": "480"
-      },
-      on: { "sliding-start": _vm.onSlideStart, "sliding-end": _vm.onSlideEnd },
-      model: {
-        value: _vm.slide,
-        callback: function($$v) {
-          _vm.slide = $$v
+    "div",
+    [
+      _c(
+        "b-carousel",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.show,
+              expression: "show"
+            }
+          ],
+          staticStyle: { "text-shadow": "1px 1px 2px #333" },
+          attrs: {
+            id: "carousel-1",
+            interval: 2000,
+            fade: "",
+            indicators: "",
+            background: "#000",
+            "img-width": "1024",
+            "img-height": "480"
+          },
+          on: {
+            "sliding-start": _vm.onSlideStart,
+            "sliding-end": _vm.onSlideEnd
+          },
+          model: {
+            value: _vm.slide,
+            callback: function($$v) {
+              _vm.slide = $$v
+            },
+            expression: "slide"
+          }
         },
-        expression: "slide"
-      }
-    },
-    _vm._l(_vm.items, function(item, index) {
-      return _c("b-carousel-slide", {
-        attrs: {
-          caption: "Tu próxima historia, ahora",
-          text: "DISFRUTA DONDE QUIERAS. CANCELA CUANDO QUIERAS.",
-          "img-src": item.url
-        }
-      })
-    }),
+        _vm._l(_vm.items, function(item, index) {
+          return _c("b-carousel-slide", {
+            key: index,
+            attrs: {
+              caption: item.title,
+              text: item.description,
+              "img-src": item.url
+            }
+          })
+        }),
+        1
+      )
+    ],
     1
   )
 }
@@ -57722,7 +57773,7 @@ Object(vuex_router_sync__WEBPACK_IMPORTED_MODULE_3__["sync"])(_store_index__WEBP
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].mixin({
   data: function data() {
     return {
-      titleApp: 'Buenas Pelis'
+      titleApp: 'Buenas Pelis..'
     };
   }
 });
@@ -57987,9 +58038,7 @@ __webpack_require__(/*! @fortawesome/fontawesome-free/css/all.min.css */ "./node
 
 vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_3__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_8__["default"]); //window.Vue = Vue;
-//window.axios = axios;
-
+vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_8__["default"]);
  // require videojs style
 
  // import 'vue-video-player/src/custom-theme.css'
@@ -58000,10 +58049,6 @@ options: global default options,
 events: global videojs events
 } */
 );
-/*videojs.addLanguage('es', {
-	Pause: 'Pausa',
-	// something...
-});*/
 
 /***/ }),
 
@@ -58160,6 +58205,10 @@ var Home = function Home(_) {
   return __webpack_require__.e(/*! import() | js/split/Home */ "js/split/Home").then(__webpack_require__.bind(null, /*! @/pages/Home/Home */ "./resources/js/pages/Home/Home.vue"));
 };
 
+var Reciente = function Reciente(_) {
+  return __webpack_require__.e(/*! import() | js/split/Home */ "js/split/Home").then(__webpack_require__.bind(null, /*! @/pages/Home/Reciente */ "./resources/js/pages/Home/Reciente.vue"));
+};
+
 var routes = [{
   path: '/',
   component: _components_layout_Layout__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -58167,6 +58216,10 @@ var routes = [{
     path: '',
     component: Home,
     name: 'Home'
+  }, {
+    path: 'recientes',
+    component: Reciente,
+    name: 'Reciente'
   }]
 }, {
   path: '*',

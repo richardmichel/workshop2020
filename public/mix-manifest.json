@@ -3,8 +3,6 @@
     "/js/manifest.js": "/js/manifest.js?id=50bd31ca8d14ea01049f",
     "/js/vendor.js": "/js/vendor.js",
     "/js/split/Home.js": "/js/split/Home.js",
-    "/js/split/MyNavBar.js": "/js/split/MyNavBar.js",
-    "/js/split/NotFound.js": "/js/split/NotFound.js",
     "/js/split/MyFooter.js": "/js/split/MyFooter.js",
-    "/js/split/MyCarousel.js": "/js/split/MyCarousel.js"
+    "/js/split/NotFound.js": "/js/split/NotFound.js"
 }

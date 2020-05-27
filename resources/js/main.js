@@ -17,8 +17,6 @@ Vue.use(Vuex);
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 
-//window.Vue = Vue;
-//window.axios = axios;
 
 import VueVideoPlayer from 'vue-video-player'
 
@@ -31,8 +29,4 @@ Vue.use(VueVideoPlayer, /* {
   events: global videojs events
 } */);
 
-/*videojs.addLanguage('es', {
-	Pause: 'Pausa',
-	// something...
-});*/
 

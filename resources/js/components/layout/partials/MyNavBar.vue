@@ -28,7 +28,7 @@
 						<b-nav-item to="/" class="cursor-select">
 							Peliculas
 						</b-nav-item>
-						<b-nav-item to="/" class="cursor-select">
+						<b-nav-item to="/recientes" class="cursor-select">
 							Recientes
 						</b-nav-item>
 

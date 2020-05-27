@@ -1,38 +1,11 @@
 <template>
 	<div>
-		<div>
-			<h4>Películas Recientes</h4>
-			<b-row cols="1" cols-sm="2" cols-md="4" cols-lg="6"
-			       class="box">
-				<b-col v-for="(item, index) in movies" :key="index">
+		<list :title="item.title" :movies="item.movies" :setVideo="setVideo" v-for="(item, index) in list" :key="index"/>
 
-					<b-button v-b-modal.modal-1
-					          @click="setVideo(item)"
-					          class="my-play-button">
-						<i class="fas fa-play fa-lg "></i>
-					</b-button>
-					<b-img :src="item.poster" fluid-grow class="my-img" alt="Fluid image"></b-img>
-				</b-col>
-			</b-row>
-		</div>
-		<div>
-			<h4>Películas Populares</h4>
-			<b-row cols="1" cols-sm="2" cols-md="4" cols-lg="6"
-			       class="box">
-				<b-col v-for="(item, index) in movies" :key="index">
-
-					<b-button v-b-modal.modal-1
-					          @click="setVideo(item)"
-					          class="my-play-button">
-						<i class="fas fa-play fa-lg "></i>
-					</b-button>
-					<b-img :src="item.poster" fluid-grow class="my-img" alt="Fluid image"></b-img>
-				</b-col>
-			</b-row>
-		</div>
-
-
-		<b-modal id="modal-1" size="xl" hide-footer hide-header
+		<b-modal id="modal-1"
+		         size="xl"
+		         hide-footer
+		         hide-header
 		         body-class="body-class"
 		         :title="movie.title">
 			<my-video
@@ -49,49 +22,68 @@
 	import {ServiceFactory} from '@/services/ServiceFactory';
 
 	const MovieService = ServiceFactory.get('movie');
+	import List from '@/pages/Home/partials/List';
 
+	const arrayMovies = _ => {
+		return [
+			{
+				title: "Bad Boys-3",
+				url: '/api/file/show-file/bad-boys-3.mp4',
+				poster: '/api/file/show-file/bad-boys-3.jpg'
+			},
+			{
+				title: "Rápido y Furioso",
+				url: '/api/file/show-file/fast-and-furious.mp4',
+				poster: '/api/file/show-file/fast-and-furious.jpg'
+			},
+			{
+				title: "Rápido y Furioso",
+				url: '/api/file/show-file/jurassic-world-2.mp4',
+				poster: '/api/file/show-file/jurassic-world-2.jpg'
+			},
+			{
+				title: "Rápido y Furioso",
+				url: '/api/file/show-file/La-casa-de-papel.mp4',
+				poster: '/api/file/show-file/La-casa-de-papel.jpg'
+			},
+			{
+				title: "Rápido y Furioso",
+				url: '/api/file/show-file/rescate.mp4',
+				poster: '/api/file/show-file/rescate.jpg'
+			},
+			{
+				title: "Sonic",
+				url: '/api/file/show-file/sonic.mp4',
+				poster: '/api/file/show-file/sonic.jpeg'
+			}
+
+		];
+	};
 	export default {
 		name: "Home",
-		components: {MyVideo},
+		components: {
+			MyVideo,
+			List
+		},
 		data: () => ({
 			movie: {
 				url: null,
 				poster: null,
 				title: null
 			},
-			movies: [
+			list: [
 				{
-					title: "Bad Boys-3",
-					url: '/api/file/show-file/bad-boys-3.mp4',
-					poster: '/api/file/show-file/bad-boys-3.jpg'
-				},
-				{
-					title: "Rápido y Furioso",
-					url: '/api/file/show-file/fast-and-furious.mp4',
-					poster: '/api/file/show-file/fast-and-furious.jpg'
-				},
-				{
-					title: "Rápido y Furioso",
-					url: '/api/file/show-file/jurassic-world-2.mp4',
-					poster: '/api/file/show-file/jurassic-world-2.jpg'
-				},
-				{
-					title: "Rápido y Furioso",
-					url: '/api/file/show-file/La-casa-de-papel.mp4',
-					poster: '/api/file/show-file/La-casa-de-papel.jpg'
-				},
-				{
-					title: "Rápido y Furioso",
-					url: '/api/file/show-file/rescate.mp4',
-					poster: '/api/file/show-file/rescate.jpg'
-				},
-				{
-					title: "Sonic",
-					url: '/api/file/show-file/sonic.mp4',
-					poster: '/api/file/show-file/sonic.jpeg'
+					title: "Películas Recientes",
+					movies: arrayMovies()
+
+				}, {
+					title: "Películas Populares",
+					movies: arrayMovies()
 				}
 
-			]
+			],
+
+
 		}),
 		methods: {
 			setVideo(item) {
@@ -152,7 +144,7 @@
 		min-width: 180px;
 	}
 
-	.my-play-button{
+	.my-play-button {
 		position: absolute;
 		left: 45%;
 		top: 30%;
@@ -160,10 +152,10 @@
 		border: none;
 		color: #fff;
 	}
-	.my-play-button:hover{
+
+	.my-play-button:hover {
 		cursor: pointer !important;
 		background: rgba(0, 0, 0, 0.68) !important;
-
 
 	}
 

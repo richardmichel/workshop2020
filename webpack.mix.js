@@ -66,3 +66,9 @@ if (mix.inProduction()) {
 		.version();
 }
 mix.disableNotifications();
+
+mix.options({
+	terser: {
+		extractComments: false,
+	}
+});
