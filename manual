@@ -47,3 +47,11 @@ CREATE DATABASE `mis_pelis` DEFAULT CHARACTER SET = `utf8` DEFAULT COLLATE = `ut
 2._ actualizar las clases
     commando:
         composer dump-autoload
+
+========
+
+correr todo el programa
+php artisan migrate:fresh --seed
+composer dump-autoload
+npm run prod
+php artisan serve
