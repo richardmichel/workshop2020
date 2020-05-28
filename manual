@@ -51,7 +51,8 @@ CREATE DATABASE `mis_pelis` DEFAULT CHARACTER SET = `utf8` DEFAULT COLLATE = `ut
 ========
 
 correr todo el programa
-php artisan migrate:fresh --seed
 composer dump-autoload
+php artisan migrate:fresh --seed
 npm run prod
+npm run prod-css
 php artisan serve
