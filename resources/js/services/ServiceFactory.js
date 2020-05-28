@@ -1,7 +1,8 @@
 import MovieService from "@/services/movieService";
 
 const services = {
-	movie: MovieService,
+	movie: MovieService
+
 };
 
 export const ServiceFactory = {

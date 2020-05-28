@@ -11,7 +11,7 @@ sync(store, router);
 
 Vue.mixin({
 	data: () => ({
-		titleApp: 'Buenas Pelis..'
+		titleApp: 'Buenas Pelis'
 	})
 });
 new Vue({

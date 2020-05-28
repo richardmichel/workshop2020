@@ -16,19 +16,21 @@ const headersDefault = _ =>{
 };
 
 // For common config
-axios.defaults.headers.post["Content-Type"] = "application/json";
+
 axios.defaults.headers.common = headersDefault();
 axios.interceptors.request.use(requestF, requestError);
 axios.interceptors.response.use(responseF, responseError);
 
 // create a new axios instance
 const httpResource = axios.create({
-	baseURL: `${API_URL}v1/`
+	baseURL: `${API_URL}/`
 });
-httpResource.defaults.headers.post["Content-Type"] = "application/json";
+
 httpResource.defaults.headers.common = headersDefault();
 httpResource.interceptors.request.use(requestF, requestError);
 httpResource.interceptors.response.use(responseF, responseError);
+
+
 export {
 	httpResource
 }

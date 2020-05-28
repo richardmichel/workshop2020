@@ -143,38 +143,48 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+ //serviicios
 
 
 var MovieService = _services_ServiceFactory__WEBPACK_IMPORTED_MODULE_2__["ServiceFactory"].get('movie');
 
+/*const arrayMovies = _ => {
+	return [
+		{
+			title: "Bad Boys-3",
+			url: '/api/file/show-file/bad-boys-3.mp4',
+			poster: '/api/file/show-file/bad-boys-3.jpg'
+		},
+		{
+			title: "Rápido y Furioso",
+			url: '/api/file/show-file/fast-and-furious.mp4',
+			poster: '/api/file/show-file/fast-and-furious.jpg'
+		},
+		{
+			title: "Rápido y Furioso",
+			url: '/api/file/show-file/jurassic-world-2.mp4',
+			poster: '/api/file/show-file/jurassic-world-2.jpg'
+		},
+		{
+			title: "Rápido y Furioso",
+			url: '/api/file/show-file/La-casa-de-papel.mp4',
+			poster: '/api/file/show-file/La-casa-de-papel.jpg'
+		},
+		{
+			title: "Rápido y Furioso",
+			url: '/api/file/show-file/rescate.mp4',
+			poster: '/api/file/show-file/rescate.jpg'
+		},
+		{
+			title: "Sonic",
+			url: '/api/file/show-file/sonic.mp4',
+			poster: '/api/file/show-file/sonic.jpeg'
+		}
 
-var arrayMovies = function arrayMovies(_) {
-  return [{
-    title: "Bad Boys-3",
-    url: '/api/file/show-file/bad-boys-3.mp4',
-    poster: '/api/file/show-file/bad-boys-3.jpg'
-  }, {
-    title: "Rápido y Furioso",
-    url: '/api/file/show-file/fast-and-furious.mp4',
-    poster: '/api/file/show-file/fast-and-furious.jpg'
-  }, {
-    title: "Rápido y Furioso",
-    url: '/api/file/show-file/jurassic-world-2.mp4',
-    poster: '/api/file/show-file/jurassic-world-2.jpg'
-  }, {
-    title: "Rápido y Furioso",
-    url: '/api/file/show-file/La-casa-de-papel.mp4',
-    poster: '/api/file/show-file/La-casa-de-papel.jpg'
-  }, {
-    title: "Rápido y Furioso",
-    url: '/api/file/show-file/rescate.mp4',
-    poster: '/api/file/show-file/rescate.jpg'
-  }, {
-    title: "Sonic",
-    url: '/api/file/show-file/sonic.mp4',
-    poster: '/api/file/show-file/sonic.jpeg'
-  }];
-};
+	];
+};*/
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
@@ -189,13 +199,17 @@ var arrayMovies = function arrayMovies(_) {
         poster: null,
         title: null
       },
-      list: [{
-        title: "Películas Recientes",
-        movies: arrayMovies()
-      }, {
-        title: "Películas Populares",
-        movies: arrayMovies()
-      }]
+
+      /*list: [
+      	{
+      		title: "Películas Recientes",
+      		movies: arrayMovies()
+      		}, {
+      		title: "Películas Populares",
+      		movies: arrayMovies()
+      	}
+      	],*/
+      list: []
     };
   },
   methods: {
@@ -213,33 +227,33 @@ var arrayMovies = function arrayMovies(_) {
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return MovieService.get();
+                return MovieService.getMyMovies();
 
               case 3:
                 response = _context.sent;
 
                 if (response && response.status == 200) {
                   data = response.data;
-                  console.log("data:", data);
+                  _this.list = data.movies;
+                } else {
+                  _this.errorF(response);
                 }
 
-                _this.errorF(response);
-
-                _context.next = 11;
+                _context.next = 10;
                 break;
 
-              case 8:
-                _context.prev = 8;
+              case 7:
+                _context.prev = 7;
                 _context.t0 = _context["catch"](0);
 
                 _this.errorF(_context.t0);
 
-              case 11:
+              case 10:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 8]]);
+        }, _callee, null, [[0, 7]]);
       }))();
     },
     errorF: function errorF(error) {
@@ -249,27 +263,6 @@ var arrayMovies = function arrayMovies(_) {
   created: function created() {
     this.init();
   }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Home/Reciente.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Home/Reciente.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Reciente"
 });
 
 /***/ }),
@@ -350,7 +343,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.body-class {\n\tpadding: 0rem;\n}\n.card-img {\n\theight: 200px !important;\n\tborder-radius: 0px !important;\n}\n.box .col {\n\n\tpadding-top: .75rem;\n\tpadding-bottom: .75rem;\n\tmin-height: 100px;\n\tmin-width: 180px;\n}\n.box .col:hover {\n\ttransition: transform .3s;\n\t-ms-transform: scale(1.4);\n\t-webkit-transform: scale(1.4);\n\ttransform: scale(1.4);\n\tz-index: 2;\n}\n.my-img {\n\tmin-height: 100px;\n\tmin-width: 180px;\n}\n.my-play-button {\n\tposition: absolute;\n\tleft: 45%;\n\ttop: 30%;\n\tbackground: #0000008c !important;\n\tborder: none;\n\tcolor: #fff;\n}\n.my-play-button:hover {\n\tcursor: pointer !important;\n\tbackground: rgba(0, 0, 0, 0.68) !important;\n}\n\n", ""]);
+exports.push([module.i, "\n.body-class {\n\tpadding: 0rem;\n}\n.card-img {\n\theight: 200px !important;\n\tborder-radius: 0px !important;\n}\n.my-modal-header{\n\tbackground-color: #000!important;\n\tborder: none;\n}\n.box .col {\n\n\tpadding-top: .75rem;\n\tpadding-bottom: .75rem;\n\tmin-height: 100px;\n\tmin-width: 180px;\n}\n.box .col:hover {\n\ttransition: transform .3s;\n\t-ms-transform: scale(1.4);\n\t-webkit-transform: scale(1.4);\n\ttransform: scale(1.4);\n\tz-index: 2;\n}\n.my-img {\n\tmin-height: 100px;\n\tmin-width: 180px;\n}\n.my-play-button {\n\tposition: absolute;\n\tleft: 45%;\n\ttop: 30%;\n\tbackground: #0000008c !important;\n\tborder: none;\n\tcolor: #fff;\n}\n.my-play-button:hover {\n\tcursor: pointer !important;\n\tbackground: rgba(0, 0, 0, 0.68) !important;\n}\n\n", ""]);
 
 // exports
 
@@ -518,8 +511,10 @@ var render = function() {
             id: "modal-1",
             size: "xl",
             "hide-footer": "",
-            "hide-header": "",
+            centered: "",
+            "header-bg-variant": "dark",
             "body-class": "body-class",
+            "header-class": "my-modal-header",
             title: _vm.movie.title
           }
         },
@@ -537,37 +532,6 @@ var render = function() {
   )
 }
 var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Home/Reciente.vue?vue&type=template&id=000b654a&scoped=true&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Home/Reciente.vue?vue&type=template&id=000b654a&scoped=true& ***!
-  \***********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Mis películas recientes")])])
-  }
-]
 render._withStripped = true
 
 
@@ -598,7 +562,7 @@ var render = function() {
         "b-row",
         {
           staticClass: "box",
-          attrs: { cols: "1", "cols-sm": "2", "cols-md": "4", "cols-lg": "6" }
+          attrs: { cols: "1", "cols-sm": "3", "cols-md": "4", "cols-lg": "6" }
         },
         _vm._l(_vm.movies, function(item, index) {
           return _c(
@@ -751,9 +715,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_URL", function() { return API_URL; });
 var STATUS = 'local';
 var BASE_URL = {
-  'local': 'http://10.0.0.7:8001/',
-  'dev': 'https://',
-  'production': 'https://'
+  'local': 'http://127.0.0.1:8000/',
+  'dev': 'https://10.0.0.1:80005/',
+  'production': 'https://api-buenas-pelis.com/'
 };
 var API_URL = BASE_URL[STATUS] + 'api/';
 
@@ -841,75 +805,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_097fa176___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_097fa176___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/pages/Home/Reciente.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/pages/Home/Reciente.vue ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Reciente_vue_vue_type_template_id_000b654a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Reciente.vue?vue&type=template&id=000b654a&scoped=true& */ "./resources/js/pages/Home/Reciente.vue?vue&type=template&id=000b654a&scoped=true&");
-/* harmony import */ var _Reciente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Reciente.vue?vue&type=script&lang=js& */ "./resources/js/pages/Home/Reciente.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Reciente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Reciente_vue_vue_type_template_id_000b654a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Reciente_vue_vue_type_template_id_000b654a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "000b654a",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/pages/Home/Reciente.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/pages/Home/Reciente.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ./resources/js/pages/Home/Reciente.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Reciente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Reciente.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Home/Reciente.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Reciente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/pages/Home/Reciente.vue?vue&type=template&id=000b654a&scoped=true&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/pages/Home/Reciente.vue?vue&type=template&id=000b654a&scoped=true& ***!
-  \*****************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Reciente_vue_vue_type_template_id_000b654a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Reciente.vue?vue&type=template&id=000b654a&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Home/Reciente.vue?vue&type=template&id=000b654a&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Reciente_vue_vue_type_template_id_000b654a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Reciente_vue_vue_type_template_id_000b654a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -1039,15 +934,13 @@ var headersDefault = function headersDefault(_) {
 }; // For common config
 
 
-axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.post["Content-Type"] = "application/json";
 axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common = headersDefault();
 axios__WEBPACK_IMPORTED_MODULE_2___default.a.interceptors.request.use(requestF, requestError);
 axios__WEBPACK_IMPORTED_MODULE_2___default.a.interceptors.response.use(responseF, responseError); // create a new axios instance
 
 var httpResource = axios__WEBPACK_IMPORTED_MODULE_2___default.a.create({
-  baseURL: "".concat(_config_settings__WEBPACK_IMPORTED_MODULE_1__["API_URL"], "v1/")
+  baseURL: "".concat(_config_settings__WEBPACK_IMPORTED_MODULE_1__["API_URL"], "/")
 });
-httpResource.defaults.headers.post["Content-Type"] = "application/json";
 httpResource.defaults.headers.common = headersDefault();
 httpResource.interceptors.request.use(requestF, requestError);
 httpResource.interceptors.response.use(responseF, responseError);
@@ -1068,8 +961,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var resource = "movies";
 /* harmony default export */ __webpack_exports__["default"] = ({
-  get: function get() {
-    return _services_http__WEBPACK_IMPORTED_MODULE_0__["httpResource"].post("".concat(resource));
+  getMyMovies: function getMyMovies() {
+    return _services_http__WEBPACK_IMPORTED_MODULE_0__["httpResource"].get("".concat(resource));
   }
 });
 

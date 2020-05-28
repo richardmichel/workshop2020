@@ -5,8 +5,10 @@
 		<b-modal id="modal-1"
 		         size="xl"
 		         hide-footer
-		         hide-header
+		         centered
+		         header-bg-variant="dark"
 		         body-class="body-class"
+		         header-class="my-modal-header"
 		         :title="movie.title">
 			<my-video
 					v-if="movie.url"
@@ -19,12 +21,15 @@
 
 <script>
 	import MyVideo from "@/components/ui/MyVideo";
+
+	//serviicios
 	import {ServiceFactory} from '@/services/ServiceFactory';
 
 	const MovieService = ServiceFactory.get('movie');
+
 	import List from '@/pages/Home/partials/List';
 
-	const arrayMovies = _ => {
+	/*const arrayMovies = _ => {
 		return [
 			{
 				title: "Bad Boys-3",
@@ -58,7 +63,7 @@
 			}
 
 		];
-	};
+	};*/
 	export default {
 		name: "Home",
 		components: {
@@ -71,7 +76,7 @@
 				poster: null,
 				title: null
 			},
-			list: [
+			/*list: [
 				{
 					title: "Películas Recientes",
 					movies: arrayMovies()
@@ -81,7 +86,8 @@
 					movies: arrayMovies()
 				}
 
-			],
+			],*/
+			list: []
 
 
 		}),
@@ -92,13 +98,15 @@
 			async init() {
 
 				try {
-					const response = await MovieService.get();
+					const response = await MovieService.getMyMovies();
 					if (response && response.status == 200) {
-						const {data} = response;
-						console.log("data:", data);
 
+						const {data} = response;
+						this.list = data.movies;
+
+					}else{
+						this.errorF(response);
 					}
-					this.errorF(response);
 				} catch (error) {
 					this.errorF(error);
 				}
@@ -121,6 +129,11 @@
 	.card-img {
 		height: 200px !important;
 		border-radius: 0px !important;
+	}
+
+	.my-modal-header{
+		background-color: #000!important;
+		border: none;
 	}
 
 	.box .col {

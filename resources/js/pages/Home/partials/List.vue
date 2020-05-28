@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h5>{{title}}</h5>
-		<b-row cols="1" cols-sm="2" cols-md="4" cols-lg="6"
+		<b-row cols="1" cols-sm="3" cols-md="4" cols-lg="6"
 		       class="box">
 			<b-col v-for="(item, index) in movies" :key="index">
 				<b-button v-b-modal.modal-1
